@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="10dp"
+    android:padding="15dp"
+    android:background="@drawable/bg_movie">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivPosterMovie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        app:shapeAppearanceOverlay="@style/RoundedImageView"
+        app:srcCompat="@drawable/ic_launcher_background"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/ivPosterMovie"
+        app:layout_constraintStart_toEndOf="@id/ivPosterMovie"
+        app:layout_constraintBottom_toBottomOf="@id/ivPosterMovie"
+        android:layout_marginHorizontal="15dp"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvNameMovie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="16sp"
+            tools:hint="NameMovie"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColorHint="@color/colorDarkHard"
+            style="@style/TextView.ItalicDarkHard"/>
+
+        <ImageView
+            android:id="@+id/ivRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvNameMovie"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_start_gold"/>
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivRating"
+            app:layout_constraintTop_toTopOf="@id/ivRating"
+            app:layout_constraintBottom_toBottomOf="@id/ivRating"
+            style="@style/TextView.LightDarkHard"
+            android:textSize="14sp"
+            android:layout_marginHorizontal="5dp"
+            tools:hint = "7.7"
+            android:textColorHint="@color/colorDark"/>
+
+        <ImageView
+            android:id="@+id/ivCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ivRating"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_calendar"/>
+
+        <TextView
+            android:id="@+id/tvRelease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/ivCalendar"
+            app:layout_constraintBottom_toBottomOf="@id/ivCalendar"
+            app:layout_constraintStart_toEndOf="@id/ivCalendar"
+            android:layout_marginHorizontal="5dp"
+            style="@style/TextView.LightDarkHard"
+            android:textSize="14sp"
+            tools:hint="2020-18-03"
+            android:textColorHint="@color/colorDark"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

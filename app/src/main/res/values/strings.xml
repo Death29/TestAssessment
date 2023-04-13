@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Test Assessment</string>
+
+    <string name="txt_login">Login</string>
+    <string name="txt_guest">As a Guest</string>
+
+    <string name="lbl_genre">Genre</string>
+    <string name="lbl_movie">List Movie</string>
+    <string name="lbl_detail">Detail Movie</string>
+
+    <string name="txt_try_again">Please Try Again</string>
+    <string name="txt_retry">Retry</string>
+    <string name="txt_see_trailer">See Trailer</string>
+    <string name="txt_see_reviews">See Review</string>
+    <string name="txt_hide_trailer">Hide Trailer</string>
+    <string name="txt_hide_reviews">Hide Review</string>
+</resources>
