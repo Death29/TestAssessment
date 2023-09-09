@@ -13,12 +13,24 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <TextView
+        android:id="@+id/tvSeeFav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbarListMovie"
+        style="@style/TextView.SansMediumWhite"
+        android:textColor="@color/black"
+        android:text="See List Favorite Movie >>>"
+        android:gravity="center"
+        android:layout_marginTop="10dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMovie"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbarListMovie"
+        app:layout_constraintTop_toBottomOf="@id/tvSeeFav"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_list_movie"/>
 

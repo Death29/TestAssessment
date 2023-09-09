@@ -14,4 +14,9 @@
     <string name="txt_see_reviews">See Review</string>
     <string name="txt_hide_trailer">Hide Trailer</string>
     <string name="txt_hide_reviews">Hide Review</string>
+    <string name="trailer">Trailer</string>
+    <string name="reviews">Reviews</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="unbookmark">UnBookmark</string>
+    <string name="lbl_fav_movie">Favorite Movie</string>
 </resources>

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.TestAssessment"
         tools:targetApi="31">
         <activity
+            android:name=".screen.movie.favorite.ActivityListFavMovie"
+            android:exported="false" />
+        <activity
             android:name=".screen.movie.detail.ActivityDetailMovies"
             android:exported="false" />
         <activity

@@ -11,11 +11,11 @@ data class ResponseTrailerMovie(
 	val id: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItem>
+	val results: List<ResultsItemTrailer>
 ) : Parcelable
 
 @Parcelize
-data class ResultsItem(
+data class ResultsItemTrailer(
 
 	@field:SerializedName("site")
 	val site: String? = null,
@@ -45,5 +45,5 @@ data class ResultsItem(
 	val iso6391: String? = null,
 
 	@field:SerializedName("key")
-	val key: String? = null
+	val key: String = ""
 ) : Parcelable

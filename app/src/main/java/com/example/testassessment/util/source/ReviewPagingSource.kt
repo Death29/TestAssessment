@@ -1,5 +1,6 @@
 package com.example.testassessment.util.source
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.testassessment.model.response.ResultsMovie
@@ -8,7 +9,8 @@ import com.example.testassessment.util.Repository
 
 class ReviewPagingSource(
     private val repo: Repository,
-    private val idMovie: Int): PagingSource<Int, ResultsReview>(){
+    private val idMovie: Int
+) : PagingSource<Int, ResultsReview>() {
     override fun getRefreshKey(state: PagingState<Int, ResultsReview>): Int? {
         return null
     }
@@ -19,17 +21,24 @@ class ReviewPagingSource(
             val response = repo.getReviewMovie(idMovie, currentPage)
             val data = response.body()!!.results
 
+            if (data.isEmpty()) {
+                throw NoDataException()
+                Log.d("data review", "null list")
+            }
+
             val responseData = mutableListOf<ResultsReview>()
             responseData.addAll(data)
+
 
             LoadResult.Page(
                 data = responseData,
                 prevKey = if (currentPage == 1) null else -1,
                 nextKey = currentPage.plus(1)
             )
-        }catch (e: Exception){
+
+        } catch (e: Exception) {
             LoadResult.Error(e)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             LoadResult.Error(e)
         }
     }

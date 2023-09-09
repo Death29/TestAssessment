@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.example.testassessment.model.request.RequestBodyLogin
 import com.example.testassessment.model.response.*
 import com.example.testassessment.util.source.MoviesPagingSource
 import com.example.testassessment.util.source.ReviewPagingSource
@@ -18,17 +17,6 @@ import javax.inject.Inject
 class ViewModelMovie @Inject constructor(private val repo: Repository):ViewModel() {
     val loading = MutableLiveData<Boolean>()
     val errorMsg = MutableLiveData<String>()
-
-    //For Session
-    val guestSession = MutableLiveData<ResponseGuestSession>()
-    fun loadGuestSession() = viewModelScope.launch {
-        loading.postValue(true)
-        val response = repo.getSession()
-        if (response.isSuccessful)guestSession.postValue(response.body())
-        else errorMsg.postValue(response.message())
-
-        loading.postValue(false)
-    }
 
     //Get Genre
     val liveDataGenre = MutableLiveData<ResponseAllGenre>()

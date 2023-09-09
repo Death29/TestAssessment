@@ -5,19 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testassessment.R
 import com.example.testassessment.databinding.ActivityListMovieBinding
-import com.example.testassessment.model.response.ResultsMovie
 import com.example.testassessment.screen.movie.detail.ActivityDetailMovies
+import com.example.testassessment.screen.movie.favorite.ActivityListFavMovie
 import com.example.testassessment.util.AdapterLoadMoreData
 import com.example.testassessment.util.Constants
 import com.example.testassessment.util.ViewModelMovie
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -49,6 +47,10 @@ class ActivityListMovie : AppCompatActivity() {
 
     private fun setupView() {
         binding.apply {
+
+            tvSeeFav.setOnClickListener {
+                startActivity(Intent(this@ActivityListMovie, ActivityListFavMovie::class.java))
+            }
 
             lifecycleScope.launch {
                 viewModelsMovie.movieList(dataIntentFromGenre).collect {

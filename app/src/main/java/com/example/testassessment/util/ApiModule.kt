@@ -1,6 +1,8 @@
 package com.example.testassessment.util
 
 import com.example.testassessment.BuildConfig
+import com.example.testassessment.BuildConfig.API_KEY
+import com.example.testassessment.BuildConfig.BASE_URL
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -20,7 +22,7 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideBaseUrl() = Constants.BASE_URL
+    fun provideBaseUrl() = BASE_URL
 
     @Provides
     @Singleton
@@ -33,6 +35,7 @@ object ApiModule {
     @Provides
     @Singleton
     fun provideOkhttpClient() = if (BuildConfig.DEBUG){
+
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -41,7 +44,7 @@ object ApiModule {
             val url = chain.request()
                 .url
                 .newBuilder()
-                .addQueryParameter("api_key", Constants.API_KEY)
+                .addQueryParameter(Constants.API, API_KEY)
                 .build()
 
             val request = chain.request()

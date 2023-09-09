@@ -1,12 +1,16 @@
 package com.example.testassessment.util
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testassessment.databinding.LayoutLoadMoreBinding
+import com.example.testassessment.util.source.NoDataException
 
 class AdapterLoadMoreData(private val retry:()-> Unit): LoadStateAdapter<AdapterLoadMoreData.ViewHolder>() {
     private lateinit var binding: LayoutLoadMoreBinding
@@ -17,10 +21,41 @@ class AdapterLoadMoreData(private val retry:()-> Unit): LoadStateAdapter<Adapter
         }
 
         fun setData(state: LoadState){
+            if (state is LoadState.Error){
+                if (state.error is NoDataException){
+                    handlingNoData()
+                    Log.d("load more", "no data")
+                }else {
+                    handlingErrorData()
+                    Log.d("load more", "error no data")
+                }
+            }else {
+                handlingLoadingMoreData()
+                Log.d("load more", "load more data")
+            }
+        }
+
+        private fun handlingLoadingMoreData() {
             binding.apply {
-                pbLoading.isVisible = state is LoadState.Loading
-                tvLoadMore.isVisible = state is LoadState.Error
-                btnRetryLoad.isVisible = state is LoadState.Error
+                pbLoading.visibility = VISIBLE
+                tvLoadMore.visibility = GONE
+                btnRetryLoad.visibility = GONE
+            }
+        }
+
+        private fun handlingErrorData() {
+            binding.apply {
+                pbLoading.visibility = GONE
+                tvLoadMore.visibility = VISIBLE
+                btnRetryLoad.visibility = VISIBLE
+            }
+        }
+
+        private fun handlingNoData() {
+            binding.apply {
+                pbLoading.visibility = GONE
+                tvLoadMore.visibility = GONE
+                btnRetryLoad.visibility = GONE
             }
         }
     }
